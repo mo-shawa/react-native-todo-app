@@ -14,7 +14,8 @@ export default function TodoItem(props) {
 
 const styles = StyleSheet.create({
     todoItem: {
-        padding: 15,
+        paddingVertical: 5,
+        paddingLeft: 10,
         backgroundColor: '#f5f5f5',
         marginTop: 5,
         borderRadius: 5,
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
         maxWidth: '80%',
     },
     deleteIcon: {
-        padding: 15,
+        padding: 10,
         // margin: 5,
     }
 }) 

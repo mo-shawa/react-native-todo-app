@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 60,
     paddingVertical: 30,
+    paddingTop: 10,
     display: 'flex',
     justifyContent: 'space-between',
     height: '75%'
