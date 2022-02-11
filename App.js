@@ -1,33 +1,46 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import TodoItem from './components/TodoItem';
+import Header from './components/Header';
 
 export default function App() {
   const [todoItem, setTodoItem] = useState('')
   const [todoList, setTodoList] = useState([])
+
   const addTodoItem = () => {
     if (todoItem.trim() == '') return
     setTodoList([...todoList, todoItem])
     setTodoItem('')
   }
-  return (
-    <View style={styles.container}>
-      <View>
-        <TextInput style={styles.textInput} placeholder='Enter Todo' onChangeText={text => setTodoItem(text)} value={todoItem} />
-        <Button title='Add Todo' onPress={() => addTodoItem()} />
-      </View>
-      <View>
-        <Text style={styles.heading}>List of Todos</Text>
 
+  const deleteTodo = (index) => {
+    let todos = [...todoList]
+    todos.splice(index, 1)
+    setTodoList(todos)
+  }
+  // TODO: 'done' drawer => new state holder
+  // sort by priority or date created maybe deadline => new state in todo list
+  // reminders => look into reminders for android and ios
+  // subtasks [progress bars]
+  return (
+    <View>
+      <Header title='To do List' />
+      <View style={styles.container}>
         <ScrollView>
-          {todoList.map((todo, index) => {
-            return (
-              <View key={index} style={styles.todoItem}>
-                <Text>{todo}</Text>
-              </View>
-            )
-          })}
+          <View>
+            {todoList.length === 0 ? <Text style={styles.heading}>No Todos yet, add one below</Text> : null}
+            {todoList.map((todo, index) => {
+              return (
+                <TodoItem todo={todo} key={index} index={index} delete={deleteTodo} />
+              )
+            })}
+          </View>
         </ScrollView>
+        <View>
+          <TextInput style={styles.textInput} placeholder='Enter Todo' onChangeText={text => setTodoItem(text)} value={todoItem} />
+          <Button style={styles.button} title='Add Todo' onPress={() => addTodoItem()} />
+        </View>
       </View>
     </View>
   );
@@ -35,11 +48,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 60,
+    paddingHorizontal: 60,
+    paddingVertical: 30,
     display: 'flex',
-    flexDirection: 'column-reverse',
     justifyContent: 'space-between',
-    height: '100%'
+    height: '75%'
   },
   textInput: {
     padding: 10,
@@ -53,10 +66,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 10
   },
-  todoItem: {
-    borderBottomColor: '#222222',
-    borderBottomWidth: 1,
-    marginVertical: 5,
-    padding: 15
-  }
 });
