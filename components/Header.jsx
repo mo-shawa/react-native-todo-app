@@ -11,15 +11,16 @@ export default function Header(props) {
 
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: 'blue',
+        backgroundColor: '#161616',
         height: '25%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         // borderBottomRightRadius: 100,
-        // borderBottomWidth: 0,
+        // borderBottomLeftRadius: 40,
+        borderBottomWidth: 2,
         // borderRightWidth: 2,
-        // borderColor: 'cyan'
+        borderColor: '#8AAD6B'
     },
     title: {
         fontSize: 40,

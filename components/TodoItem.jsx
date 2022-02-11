@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         borderRadius: 5,
         borderWidth: 0.5,
-        borderColor: 'blue',
+        borderColor: '#8AAD6B',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',

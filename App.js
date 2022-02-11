@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+// import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, StatusBar } from 'react-native';
 import TodoItem from './components/TodoItem';
 import Header from './components/Header';
 
@@ -25,6 +25,7 @@ export default function App() {
   // subtasks [progress bars]
   return (
     <View>
+      <StatusBar barStyle={'light-content'} />
       <Header title='To do List' />
       <View style={styles.container}>
         <ScrollView>
@@ -39,7 +40,7 @@ export default function App() {
         </ScrollView>
         <View>
           <TextInput style={styles.textInput} placeholder='Enter Todo' onChangeText={text => setTodoItem(text)} value={todoItem} />
-          <Button style={styles.button} title='Add Todo' onPress={() => addTodoItem()} />
+          <Button color={'#161616'} style={styles.button} title='Add Todo' onPress={() => addTodoItem()} />
         </View>
       </View>
     </View>
@@ -56,8 +57,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     padding: 10,
-    borderColor: 'blue',
-    borderWidth: 0.5,
+    borderColor: '#8AAD6B',
+    borderWidth: 1,
     borderRadius: 3,
     marginBottom: 10
   },
